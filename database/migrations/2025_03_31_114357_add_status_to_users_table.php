@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            // $table->string('status')->default('pending'); // New column
-            // $table->string('email_verification_token')->nullable();
+            $table->string('status')->default('pending'); // New column
+            $table->string('email_verification_token')->nullable();
             $table->string('otp_code')->nullable();
             $table->timestamp('otp_expires_at')->nullable();
         });

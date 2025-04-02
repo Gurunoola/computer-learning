@@ -15,6 +15,7 @@ class QnAResource extends JsonResource
     {
         return [
             'id' => (string) $this->id,
+            'topic_id' => $this->topic_id,
             'type' => 'QnA',
             'question' => $this->question,
             'answer' => $this->answer,

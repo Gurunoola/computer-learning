@@ -67,11 +67,14 @@ class AuthController extends Controller
         $user->otp_expires_at = Carbon::now()->addMinutes(10); // OTP valid for 10 mins
         $user->save();
 
-        // Send OTP via email
-        Mail::send('emails.otp', ['otp' => $otp], function ($message) use ($user) {
-            $message->to($user->email);
-            $message->subject('Your Email Verification OTP');
-        });
+       // Check if email sending is enabled in the .env file
+        if (env('SEND_REGISTRATION_EMAIL', false)) {
+            // Send OTP via email if the condition is true
+            Mail::send('emails.otp', ['otp' => $otp], function ($message) use ($user) {
+                $message->to($user->email);
+                $message->subject('Your Email Verification OTP');
+            });
+        }
 
         return response()->json(['message' => 'Registration successful. OTP sent to email.']);
     }

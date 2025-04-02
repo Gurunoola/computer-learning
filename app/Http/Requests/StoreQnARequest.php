@@ -25,6 +25,7 @@ class StoreQnARequest extends FormRequest
     {
         return [
             'question' => [$this->isPostRequest(), 'string', 'max:1000'],
+            'topic_id' => [$this->isPostRequest(), 'int'],
             'answer' => [$this->isPostRequest(), 'string', 'max:500'],
             'options' => [$this->isPostRequest(), 'string', 'regex:/^(?:[^,]+,){3}[^,]+$/'], // Must be exactly 4 comma-separated values
             'deleted' => ['boolean'],

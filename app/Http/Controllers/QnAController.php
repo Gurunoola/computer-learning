@@ -21,6 +21,7 @@ class QnAController extends Controller
         $filterableFields = [
             'question' => 'like',
             'answer' => 'like',
+            'topic_id' => '=',
             'deleted' => '='
         ];
 

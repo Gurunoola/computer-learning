@@ -6,26 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class QnA extends Model
+class LearningContent extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'qnas'; // Explicitly set the table name
-
     protected $fillable = [
-        'question',
         'topic_id',
-        'answer',
-        'options',
+        'title',
+        'type',
+        'content',
         'video_link',
-        'description',
-        'link',
-        'randomize'
-    ];
-
-    protected $casts = [
-        'randomize' => 'boolean'
+        'reference_link'
     ];
 }
-
